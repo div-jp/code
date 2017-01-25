@@ -13,7 +13,7 @@
 # === 初期化 =========================================================
 set -eu
 umask 0022
-export LC_ALL='C' PATH="$(command -p getconf PATH):$PATH"
+export LC_ALL='C'; PATH="$(command -p getconf PATH):$PATH"
 
 # === 判定 =========================================================
 if [ -t 0 ] ; then
@@ -23,7 +23,7 @@ else
 fi
 
 #流し込み
-cat "$file"                                             |
+cat "$file"                                       |
 awk ' BEGIN {
 	FS="\t";OFS="\t";
 	flg = 0;                  #重複フラグ
@@ -46,8 +46,8 @@ awk ' BEGIN {
 			print str1,str2;
 		}
 	}
-		str1 = $1;
-		str2 = $2;
+	str1 = $1;
+	str2 = $2;
 }
 END {
 	if( flg == 1 ){
@@ -58,12 +58,21 @@ END {
 		print str1,str2;
 	}
 }
-'                                   |
+'                                         |
 tail -n +2 
 
 
 
-#cat sample_data.txt | awk 'BEGIN {FS ="\t"; OFS="\t";}{ print $2 }' | sed s/^\"// | sed s/\"$// | sed 's/\\t/\t/g' | awk 'BEGIN {FS ="\t"; OFS="\t";}{ print $2,$1 }' | grep "^\$" | jsonPath_sort | jsonPath_bracket | sh makrj.sh
+#cat sample_data.txt |
+#awk 'BEGIN {FS ="\t"; OFS="\t";}{ print $2 }' |
+#sed s/^\"// |
+#sed s/\"$// |
+#sed 's/\\t/\t/g' |
+#awk 'BEGIN {FS ="\t"; OFS="\t";}{ print $2,$1 }' |
+#grep "^\$" |
+#jsonPath_sort |
+#jsonPath_bracket |
+#sh makrj.sh
 
 
 
