@@ -23,8 +23,6 @@ else
 	file='-'
 fi
 
-
-
 trap 'rm -f "$tmpfile"' EXIT
 tmpfile=$(mktemp /tmp/tmp.XXXXXXXXXX)
 
@@ -46,6 +44,8 @@ for i in $(yes "" | cat -n | head -$N | sort -r); do
 done
 
 cat $tmpfile
+
+
 
 
 
