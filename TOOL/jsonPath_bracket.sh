@@ -30,7 +30,8 @@ awk ' BEGIN {
 	num = 0;                  #配列に使う番号
 }
 {
-	if( str1 == $1 ){
+	#キー部の末尾が"]"で終わっていないかつ同じ
+	if( str1 == $1  && substr($1,(length($1)+1)-1,1) != "]" ){
 		flg = 1;
 		num = num + 1;
 		print str1"["num"]",str2;
@@ -62,20 +63,10 @@ END {
 tail -n +2 
 
 
-
-#cat sample_data.txt |
-#awk 'BEGIN {FS ="\t"; OFS="\t";}{ print $2 }' |
-#sed s/^\"// |
-#sed s/\"$// |
-#sed 's/\\t/\t/g' |
-#awk 'BEGIN {FS ="\t"; OFS="\t";}{ print $2,$1 }' |
-#grep "^\$" |
-#jsonPath_sort |
-#jsonPath_bracket |
-#sh makrj.sh
-
-
-
+#sh jsonPath_tab.sh ../DATA/data1.txt |
+#sh jsonPath_bracket.sh |
+#tr "\t" " " |
+#sh ~/mylibrary/makrj.sh >out.json
 
 
 
