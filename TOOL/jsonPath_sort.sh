@@ -13,17 +13,18 @@
 # === 初期化 =========================================================
 set -eu
 umask 0022
-export LC_ALL='C' PATH="$(command -p getconf PATH):$PATH"
+export LC_ALL='C'; PATH="$(command -p getconf PATH):$PATH"
 
+file=""
 # === 判定 ===========================================================
-if [ -t 0 ] ; then
+if [ -t 0 ]; then
 	file=$1
 else
 	file='-'
 fi
 
 #流し込み
-sort -t "[" -k 1,1 -k 2n "$file"
+cat "$file" | sort -t "[" -k 1,1 -k 2n 
 
 
 

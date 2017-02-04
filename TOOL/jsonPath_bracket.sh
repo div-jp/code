@@ -31,7 +31,7 @@ awk ' BEGIN {
 }
 {
 	#キー部の末尾が"]"で終わっていないかつ同じ
-	if( str1 == $1  && substr($1,(length($1)+1)-1,1) != "]" ){
+	if( str1 == $1 && substr($1,(length($1)+1)-1,1) != "]" ){
 		flg = 1;
 		num = num + 1;
 		print str1"["num"]",str2;
