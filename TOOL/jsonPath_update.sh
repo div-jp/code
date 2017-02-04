@@ -5,12 +5,13 @@
 # jsonPath_update
 # JsonPath方式で保存されている状態で、
 # トランザクションから来たデータを置き換えるスクリプト
-# SQLのUPDATEのような動き
+# キー部を元に比較してデータ部を置き換えるSQLのUPDATEのような動き
 #
 # このソフトウェアは Public Domain (CC0)であることを宣言する。
 #
 ######################################################################
 
+#demo
 #cat ../DATA/data1.txt | sh jsonPath_update.sh ../DATA/data2.txt
 #sh jsonPath_update.sh ../DATA/data1.txt ../DATA/data2.txt
 

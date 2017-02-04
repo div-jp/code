@@ -4,13 +4,14 @@
 #
 # jsonPath_checkupdate
 # JsonPath方式で保存されている状態で、
-# SQLのUPDATEのような動きをさせる前に、UPDATEされない行を
-# 表示するスクリプト。
+# UPDATEされない行を表示するスクリプト。
+#
 #
 # このソフトウェアは Public Domain (CC0)であることを宣言する。
 #
 ######################################################################
 
+#demo
 #cat ../DATA/data1.txt | sh jsonPath_checkupdate.sh ../DATA/data2.txt
 #sh jsonPath_checkupdate.sh ../DATA/data1.txt ../DATA/data2.txt
 
@@ -51,11 +52,11 @@ trap 'rm -f "$tmpfile2"' EXIT
 tmpfile2=$(mktemp /tmp/tmp.XXXXXXXXXX)
 
 # ソートとタブ区切りをして一時ファイルに出力
-cat "$master" | sh jsonPath_sort.sh | sh jsonPath_tab.sh >$tmpfile1
-cat "$tran" | sh jsonPath_sort.sh | sh jsonPath_tab.sh >$tmpfile2
+cat "$master" | sh jsonPath_sort.sh >$tmpfile1
+cat "$tran" | sh jsonPath_sort.sh >$tmpfile2
 
 # タブ区切りの状態でjoin
-join -t "$(printf '\011')" -v 1 "$tmpfile2" "$tmpfile1"
+join -v 1 "$tmpfile2" "$tmpfile1"
 printf "がUPDATEされません。\n"
 
 
