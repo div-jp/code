@@ -3,11 +3,13 @@
 <blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">makrj.shが自分の中ではかなり良くて、昔でいう「外人4コマ」みたいにガッツポーズしてるくらいなのだけれど、検索しても反響が全くなく一体どういうことなのか、私は別の世界線に存在しているのだろうか</p>&mdash; div_jp (@div_jp) <a href="https://twitter.com/div_jp/status/778694459869376513">2016年9月21日</a></blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-とツイートしただけでは示しがつかないので、私がどのように使っているのかを事例をあげつつ需要を無視して提示していこうと思います。
+とツイートしただけで何もしないのは示しがつかないので、私がどのように使っているのかを事例をあげつつ需要を無視して提示していこうと思います。
 
 
-makrj.shやJSONPathの詳細はここを参考に。製作してくれたことに感謝。
+makrj.shやJSONPathの詳細はここを参考に。製作してくれた作者様に感謝。
+
 http://qiita.com/richmikan@github/items/0dc3330163c86b249bcd
+
 
 
 以下何を作ったのか。
