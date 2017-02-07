@@ -1,30 +1,17 @@
-# makrj.shがあまりにもよかったのでスクリプトを作りました。
+== makrj.shがあまりにもよかったのでスクリプトを作りました。
 
-<blockquote class="twitter-tweet" data-lang="ja"><p lang="ja" dir="ltr">makrj.shが自分の中ではかなり良くて、昔でいう「外人4コマ」みたいにガッツポーズしてるくらいなのだけれど、検索しても反響が全くなく一体どういうことなのか、私は別の世界線に存在しているのだろうか</p>&mdash; div_jp (@div_jp) <a href="https://twitter.com/div_jp/status/778694459869376513">2016年9月21日</a></blockquote>
-<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+JSONPath-value形式のデータを操作する時の負担を減らす目的のスクリプトを作ってみました。
 
-とツイートしただけで何もしないのは示しがつかないので、私がどのように使っているのかを事例をあげつつ需要を無視して提示していこうと思います。
+=== jsonPath_tab.sh
 
-
-makrj.shやJSONPathの詳細はここを参考に。製作してくれた作者様に感謝。
-
-http://qiita.com/richmikan@github/items/0dc3330163c86b249bcd
-
-
-
-以下何を作ったのか。
-
-
-
-
-## jsonPath_tab.sh
 キー部とデータ部の間の区切り文字をタブにするスクリプト。
 
-demo
-* $ cat ../DATA/data1.txt | sh jsonPath_tab.sh
+demo:: $ cat ../DATA/data1.txt | sh jsonPath_tab.sh
+
 
 before
-```
+[before]
+----
 $.会員名 文具 太郎
 $.会員名 山田 太郎
 $.購入品[0] はさみ
@@ -36,9 +23,11 @@ $.購入品[4] のり
 $.購入品[5].取寄商品 6穴パンチ
 $.購入 文字文字
 $.購入 あいうえお
-```
+----
+
 after
-```
+[after]
+----
 $.会員名	文具 太郎
 $.会員名	山田 太郎
 $.購入品[0]	はさみ
@@ -50,18 +39,20 @@ $.購入品[4]	のり
 $.購入品[5].取寄商品	6穴パンチ
 $.購入	文字文字
 $.購入	あいうえお
-```
+----
 
 
-## jsonPath_sort.sh
-キー列のソートをするスクリプト
+
+=== jsonPath_sort.sh
+
+キー列のソートをするスクリプト。 +
 通常のsortだと[]内の数字を辞書的なソートをするので新しくつくりました。
 
-demo
-* $ cat ../DATA/data1.txt | sh jsonPath_sort.sh
+demo:: $ cat ../DATA/data1.txt | sh jsonPath_sort.sh
 
 before
-```
+[before]
+----
 $.会員名 文具 太郎
 $.会員名 山田 太郎
 $.購入品[0] はさみ
@@ -73,9 +64,11 @@ $.購入品[4] のり
 $.購入品[5].取寄商品 6穴パンチ
 $.購入 文字文字
 $.購入 あいうえお
-```
+----
+
 after
-```
+[after]
+----
 $.会員名 山田 太郎
 $.会員名 文具 太郎
 $.購入 あいうえお
@@ -87,18 +80,19 @@ $.購入品[3].取寄商品 替え芯
 $.購入品[4] のり
 $.購入品[4] クリアファイル
 $.購入品[5].取寄商品 6穴パンチ
-```
+----
 
 
-## jsonPath_bracket.sh
-キー列の重複があるときブラケット"[]"を付加するスクリプト。
-ブラケットの扱いにまだまだ改良の余地ありです。
+=== jsonPath_bracket.sh
+キー列の重複があるときブラケット"[]"を付加するスクリプト。 +
+ブラケットの扱いにまだまだ改良の余地ありです。 +
+取りこぼしもあって中途半端なつくりになってしまった。
 
-demo
-* $ cat ../DATA/data1.txt | sh jsonPath_bracket.sh
+demo:: $ cat ../DATA/data1.txt | sh jsonPath_bracket.sh
 
 before
-```
+[before]
+----
 $.会員名 文具 太郎
 $.会員名 山田 太郎
 $.購入品[0] はさみ
@@ -110,10 +104,11 @@ $.購入品[4] のり
 $.購入品[5].取寄商品 6穴パンチ
 $.購入 文字文字
 $.購入 あいうえお
-```
+----
 
 after
-```
+[after]
+----
 $.会員名[1] 文具 太郎
 $.会員名[2] 山田 太郎
 $.購入品[0] はさみ
@@ -125,18 +120,21 @@ $.購入品[4] のり
 $.購入品[5].取寄商品 6穴パンチ
 $.購入[1] 文字文字
 $.購入[2] あいうえお
-```
+----
 
 
-## jsonPath_update.sh
-トランザクションから来たキー部を元に比較してデータ部を置き換える、SQLのUPDATEのような動きをするスクリプト。
 
-demo
-* $ cat ../DATA/data1.txt | sh jsonPath_update.sh ../DATA/data2.txt
-* $ sh jsonPath_update.sh ../DATA/data1.txt ../DATA/data2.txt
+=== jsonPath_update.sh
+トランザクションから来たキー部を元に比較してデータ部を置き換える、SQLのUPDATEのような動きをするスクリプト。 +
+パイプまたは第一引数はmasterのデータを、第二引数はtranのデータを渡してください。
+
+
+demo:: $ cat ../DATA/data1.txt | sh jsonPath_update.sh ../DATA/data2.txt +
+ $ sh jsonPath_update.sh ../DATA/data1.txt ../DATA/data2.txt
 
 before
-```
+[before]
+----
 master
 $.会員名 文具 太郎
 $.会員名 山田 太郎
@@ -155,9 +153,11 @@ $.購入品[3].取寄商品 置き換え2
 $.購入品[5].取寄商品 置き換え3
 $.ダミーデータ ダミー1
 $.購入品[0] 置き換え1
-```
+----
+
 after
-```
+[after]
+----
 $.会員名 山田 太郎
 $.会員名 文具 太郎
 $.購入 あいうえお
@@ -169,20 +169,21 @@ $.購入品[3].取寄商品 置き換え2
 $.購入品[4] のり
 $.購入品[4] クリアファイル
 $.購入品[5].取寄商品 置き換え3
-```
+----
 
-## jsonPath_checkupdate.sh
+
+=== jsonPath_checkupdate.sh
 UPDATEされない行を表示するスクリプト。
 
 
-demo
-* $ cat ../DATA/data1.txt | sh jsonPath_checkupdate.sh ../DATA/data2.txt
-* $ sh jsonPath_checkupdate.sh ../DATA/data1.txt ../DATA/data2.txt
+demo:: $ cat ../DATA/data1.txt | sh jsonPath_checkupdate.sh ../DATA/data2.txt +
+$ sh jsonPath_checkupdate.sh ../DATA/data1.txt ../DATA/data2.txt
 
 
 
 before
-```
+[before]
+----
 master
 $.会員名 文具 太郎
 $.会員名 山田 太郎
@@ -201,39 +202,12 @@ $.購入品[3].取寄商品 置き換え2
 $.購入品[5].取寄商品 置き換え3
 $.ダミーデータ ダミー1
 $.購入品[0] 置き換え1
-```
+----
+
+
 after
-```
+[after]
+----
 $.ダミーデータ ダミー1
 がUPDATEされません。
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+----
