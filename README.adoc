@@ -4,12 +4,13 @@ POSIX原理主義に関係なく心の思うがまま作ったプログラムを
 
 ほとんどシェルスクリプトだと思う。
 
-DATA/
+DATA/ ::
 データ置き場
-jsonPath/
+
+jsonPath/ ::
 詳細はREADME.mdへ
-TOOL/
+
+TOOL/ ::
 何か単発で作ったもの
 
-README.md
-
+README.adoc ::
