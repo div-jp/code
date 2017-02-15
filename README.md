@@ -4,13 +4,15 @@ POSIX原理主義に関係なく心の思うがまま作ったプログラムを
 
 ほとんどシェルスクリプトだと思う。
 
-DATA/ ::
+DATA/<br>
 データ置き場
 
-jsonPath/ ::
-詳細はREADME.mdへ
+jsonPath/<br>
+jsonPathの形式について思ったことスクリプト<br>
+詳細はmakrj.shがあまりにもよかった理由.mdへ
 
-TOOL/ ::
+TOOL/<br>
 何か単発で作ったもの
 
-README.adoc ::
+README.md
+
