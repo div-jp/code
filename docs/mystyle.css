@@ -1,0 +1,12 @@
+
+pre {
+    word-wrap: break-word;
+    white-space:pre-wrap;
+    overflow: auto;
+}
+
+code {
+    word-wrap: break-word;
+    white-space:pre-wrap;
+    overflow: auto;
+}
