@@ -16,4 +16,4 @@ TOOL/<br>
 
 README.md
 
-[index](https://div-jp.github.io/code/)
+[index](https://div-jp.github.io/blog/)
