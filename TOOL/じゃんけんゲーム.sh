@@ -3,7 +3,7 @@
 #じゃんけんゲームスクリプト
 
 
-start_gamen(){
+DispStart(){
 	printf "\nじゃんけんゲーム\n"
 	printf "1.グー\n"
 	printf "2.チョキ\n"
@@ -11,7 +11,7 @@ start_gamen(){
 	printf "q.終了\n"
 }
 
-check_read(){
+CheckRead(){
 	case "${1}" in 
 		[123] ) ;;
 		q ) printf "終了します\n"; break; ;;
@@ -19,7 +19,7 @@ check_read(){
 	esac
 }
 
-check_123(){
+Check123(){
 	case "${1}" in 
 		1 ) printf "グー\n" ;;
 		2 ) printf "チョキ\n" ;;
@@ -27,11 +27,11 @@ check_123(){
 	esac
 }
 
-randam_aite(){
-	aite=$( awk 'BEGIN {srand(); print int( 3 * rand())+ 1}' )
+RandomAite(){
+	awk 'BEGIN { srand(); print int( 3 * rand())+ 1 }'
 }
 
-hantei(){
+Hantei(){
 	case "${1}" in 
 		1 ) case "${2}" in 
 				1 ) printf "あいこ\n" ;;
@@ -60,21 +60,21 @@ hantei(){
 
 while : 
 do
-	my=""
-	aite=""
+	Human=""
+	Comp=""
 
-	start_gamen
+	DispStart
 	
-	read my
-	check_read ${my}
+	read Human
+	CheckRead ${Human}
 	printf "あなたの手:"
-	check_123 ${my}
+	Check123 ${Human}
 
-	randam_aite
+	Comp=$(RandomAite)
 	printf "あいての手:"
-	check_123 ${aite}
+	Check123 ${Comp}
 
-	hantei ${my} ${aite}
+	Hantei ${Human} ${Comp}
 
 done
 

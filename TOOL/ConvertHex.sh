@@ -6,7 +6,7 @@
 #http://qiita.com/richmikan@github/items/6b763519a28b4ce40031
 #
 #例
-# convert_hex.sh "兆円欲しい"
+# ConvertHex.sh "兆円欲しい"
 #
 # &#x5146;&#x5186;&#x6B32;&#x3057;&#x3044;
 #
@@ -16,9 +16,20 @@
 #
 #################################################################
 
-convert_hex(){
 
-	local str="$1"
+
+
+ConvertHex(){
+
+	local str
+
+	if [ "" = "$1" ] ; then
+		printf "エラー！引数がありません。\n"
+		exit 2
+	else
+		str="$1"
+	fi
+
 	LF=$(printf '\\\n_'); LF=${LF%_}    # 0) 準備
 
 	printf $str                       |
@@ -32,7 +43,7 @@ convert_hex(){
 	while read i ;
 	do
 		printf "obase=2; ibase=16; $i\n" | bc
-	done                                |
+	done                                 |
 
 	#変換
 	awk '{
@@ -48,17 +59,22 @@ convert_hex(){
 	while read i ;
 	do
 		printf "obase=16; ibase=2; $i\n" | bc
-	done
+	done                                 |
+
+	xargs -I ZZ printf "&#x"ZZ";"
+	printf "\n"
+
 
 }
 
-convert_hex "$1" |
-xargs -I ZZ printf "&#x"ZZ";"
-printf "\n"
+#ConvertHex "兆円欲しい"
 
 
-#convert_hex "$1" |
+
+
+#ConvertHex "$1" |
 #sed 's/\(.*\)/\\unicode[STIXGeneral]{x\1}/'
+
 
 
 

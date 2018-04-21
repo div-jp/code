@@ -19,26 +19,32 @@ export LC_ALL='C' PATH="$(command -p getconf PATH):$PATH"
 
 kaijou()
 {
-	local x=$1
-	local y=$x
+	local num=$1
+	local y=$num
+
+	#引数チェック
+	if echo "${num}" | grep -v "^[0-9]*$" >/dev/null; then
+		echo "エラー！引数が数値ではありません。"
+		exit 1
+	fi
 
 	kaijou_saiki()
 	{
-		if [ $x -le 1 ]
+		if [ $num -le 1 ]
 		then
 			echo $y
 			return 1
 		fi
-		x=$(( x - 1 ))
-		y=$( echo "$y * $x" | bc )
-		kaijou_saiki $x
+		num=$(( num - 1 ))
+		y=$( echo "$y * $num" | bc )
+		kaijou_saiki $num
 	}
 
-	kaijou_saiki $x
+	kaijou_saiki $num
 
 }
 
-kaijou $1
+#kaijou 4
 
 
 

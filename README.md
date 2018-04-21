@@ -18,17 +18,34 @@ jsonPath/ jsonPathの形式について思ったことスクリプト<br>
 <br>  └─ README.md
 
 
+
 TOOL/ 何か単発で作ったもの
-<br>  ├─ convert_hex.sh 文字列からUTF-16に変換する
+<br>  ├─ ConvertHex.sh 文字列からUTF-16に変換する
+<br>  ├─ CutChar.sh 文字列のn文字目からm文字抜き出す関数
+<br>  ├─ kaibun.sh 回文を返す
 <br>  ├─ kaijyou.sh 階乗を求める
 <br>  ├─ kinsyu.sh 金種計算をする
-<br>  ├─ mytree.sh ツリー表示する
+<br>  ├─ Make4digits.sh 0から9までの重複しない4桁のランダムな数字を作成する関数
+<br>  ├─ MakePassword.sh 簡単なパスワードを作成する
+<br>  ├─ MyDirTree.sh ツリー表示する
+<br>  ├─ MyDu.sh duコマンドの出力を変えたもの
+<br>  ├─ random.sh ランダム関数
 <br>  ├─ substitution_indent.sh インデントをする
+<br>  ├─ telop.sh テロップの動きをする
 <br>  └─ じゃんけんゲーム.sh
+
 
 README.md
 
 [index](https://div-jp.github.io/blog/)
+
+
+
+
+
+
+
+
 
 
 

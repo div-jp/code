@@ -83,7 +83,7 @@ kinsyu(){
 
 }
 
-kinsyu $1
+#kinsyu 25343
 
 
 
