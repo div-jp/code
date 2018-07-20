@@ -31,7 +31,11 @@ TOOL/ 何か単発で作ったもの
 <br>  ├─ MyDu.sh duコマンドの出力を変えたもの
 <br>  ├─ random.sh ランダム関数
 <br>  ├─ substitution_indent.sh インデントをする
-<br>  ├─ telop.sh テロップの動きをする
+<br>  └─ telop.sh テロップの動きをする
+
+
+GAME/
+<br>  ├─ LifeGame.sh awkの勉強をするためライフゲームを作ってみた
 <br>  └─ じゃんけんゲーム.sh
 
 

@@ -44,9 +44,10 @@ CutChar(){
 	
 }
 
+
+
 #str="0あ1い2う3え4お"
 #CutChar 2 3 "$str"
-
 
 
 

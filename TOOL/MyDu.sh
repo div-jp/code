@@ -13,7 +13,7 @@ MyDu()
 		DirPath=$1
 	fi
 
-	find ${DirPath} -type f | xargs -I{} du -mh {}    |
+	find ${DirPath} -type f -exec du -mh {} \; |
 
 	#パス最後のファイル名を抜き出しするための処理
 	awk 'BEGIN {FS="/";OFS="/";}

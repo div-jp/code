@@ -11,7 +11,7 @@ MakePassword(){
 	local string='0123456789abcdefghijklmnopqrstuvwxyz'
 	#local string='0123456789'
 	#最大文字列数
-	local WordMax=25
+	local WordMax=30
 
 	local Password
 	local rand
@@ -33,7 +33,7 @@ MakePassword(){
 }
 
 
-#MakePassword
+MakePassword
 
 
 
